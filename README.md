@@ -1,3 +1,5 @@
+[![CI](https://github.com/Sinan-576403/Erinnerungsapp_frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/Sinan-576403/Erinnerungsapp_frontend/actions/workflows/ci.yml)
+
 # erinnerungsapp-frontend
 
 ## Project setup
@@ -23,7 +25,7 @@ npm run test:unit
 ### Lints and fixes files
 ```
 npm run lint
-```
 
+```
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
