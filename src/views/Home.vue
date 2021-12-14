@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Hello World"/>
+    <div class="card h-100">
+    </div>
+    <img alt="Vue logo" src="../assets/erinnerungen.jpeg">
+    <HelloWorld msg="Willkommen zu deinen Erinnerungen"/>
   </div>
 </template>
 
