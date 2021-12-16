@@ -1,83 +1,14 @@
 <template>
   <h1>Hier sind deine Erinnerungen</h1>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col">
+    <div class="col" v-for="erinnerung in erinnerungen" :key="erinnerung.id">
       <div class="card h-100">
-        <img src="../assets/planen2.jpeg" class="card-img-top" alt="...">
+        <img :src="getAvatar(erinnerung)" class="card-img-top" alt=" erinnerung.ersteAufgabe + ' ' + erinnerung.nachsteAufgabe">
         <div class="card-body">
-          <h5 class="card-title">Erste Erinnerung</h5>
-          <p class="card-text">Vergiss nicht den morgigen Tag zu planen</p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="../assets/Ha.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Zweite Erinnerung</h5>
-          <p class="card-text">Vergiss nicht deine Hausaufgaben zu erledigen</p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="../assets/kochen.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Dritte Erinnerung</h5>
-          <p class="card-text">Vergiss nicht zu kochen</p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="../assets/Sport.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Vierte Erinnerung</h5>
-          <p class="card-text">Vergiss nicht Sport zu machen</p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="../assets/kochen.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Fünfte Erinnerung</h5>
-          <p class="card-text">Vergiss nicht zu kochen</p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-          </div>
-        </div>
-      </div>
-    </div><div class="col">
-    <div class="card h-100">
-      <img src="../assets/kochen.png" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Sechste Erinnerung</h5>
-        <p class="card-text">Vergiss nicht zu kochen</p>
-        <div class="card-footer">
-          <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-      </div>
-    </div>
-  </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="../assets/Ha.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Siebte Erinnerung</h5>
-          <p class="card-text">Vergiss nicht deine Hausaufgaben zu erledigen</p>
+          <h5 class="card-title">{{ erinnerung.ersteAufgabe }} {{ erinnerung.nachsteAufgabe}} </h5>
+          <p class="card-text">
+            {{ erinnerung.ersteAufgabe }} {{ erinnerung.nachsteAufgabe}} ist {{ erinnerung.erledigt ? 'erledigt' : 'nicht erledigt'}}
+          </p>
           <div class="card-footer">
             <small class="text-muted">Last updated 3 mins ago</small>
           </div>
@@ -85,60 +16,48 @@
       </div>
     </div>
   </div>
-  <table class="table table-hover">
-    <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">ERSTE ERINNERUNG</th>
-      <th scope="col">LETZTE ERINNERUNG</th>
-      <th scope="col">ERLEDIGT?</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th scope="row">1) 12.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr>
-    <tr>
-      <th scope="row">2) 13.12.2021</th>
-      <td>PLANEN</td>
-      <td>HA</td>
-      <td>NEIN</td>
-    </tr>
-    <tr>
-      <th scope="row">3) 13.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr> <tr>
-      <th scope="row">4) 14.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr> <tr>
-      <th scope="row">5) 15.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr> <tr>
-      <th scope="row">6) 16.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr> <tr>
-      <th scope="row">7) 17.12.2021</th>
-      <td>SPORT</td>
-      <td>KOCHEN</td>
-      <td>JA</td>
-    </tr>
-    </tbody>
-  </table>
 </template>
+
 <script>
 export default {
-  name: 'Erinnerungen'
+  name: 'Erinnerungen',
+  data () {
+    return {
+      erinnerungen: [
+        {
+          id: 1,
+          ersteAufgabe: 'sport',
+          nachsteAufgabe: 'kochen',
+          erledigt: true,
+          job: 'sport'
+        },
+        {
+          id: 2,
+          ersteAufgabe: 'kochen',
+          nachsteAufgabe: 'sport',
+          erledigt: true,
+          job: 'kochen'
+        }
+      ]
+    }
+  },
+  methods: {
+    getAvatar (erinnerung) {
+      if (erinnerung.job === 'planen') {
+        return require('../assets/planen2.jpeg')
+      } else if (erinnerung.job === 'sport') {
+        return require('../assets/Sport.png')
+      } else if (erinnerung.job === 'kochen') {
+        return require('../assets/kochen.png')
+      } else if (erinnerung.job === 'termin') {
+        return require('../assets/termin.png')
+      } else if (erinnerung.job === 'freizeit') {
+        return require('../assets/freizeit.png')
+      } else if (erinnerung.job === 'ha') {
+        return require('../assets/Ha.png')
+      }
+    }
+  }
 }
 </script>
 <style scoped>
