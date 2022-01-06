@@ -24,8 +24,26 @@ export default {
       type: Array,
       required: true
     }
+  },
+  methods: {
+    getAvatar (erinnerung) {
+      if (erinnerung.job === 'planen') {
+        return require('../assets/planen2.jpeg')
+      } else if (erinnerung.job === 'sport') {
+        return require('../assets/Sport.png')
+      } else if (erinnerung.job === 'kochen') {
+        return require('../assets/kochen.png')
+      } else if (erinnerung.job === 'termin') {
+        return require('../assets/termin.png')
+      } else if (erinnerung.job === 'freizeit') {
+        return require('../assets/freizeit.png')
+      } else if (erinnerung.job === 'ha') {
+        return require('../assets/Ha.png')
+      }
+    }
   }
 }
+
 </script>
 
 <style scoped>

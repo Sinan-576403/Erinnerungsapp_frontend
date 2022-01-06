@@ -11,21 +11,21 @@
       <form class="text-start needs-validation" id="erinnerungen-create-form" novalidate>
         <div class="mb-3">
           <label for="erste-Aufgabe" class="form-label">Erste Aufgabe</label>
-          <input type="text" class="form-control" id="erste-Aufgabe" v-model="ersteAufgabe">
+          <input type="text" class="form-control" id="erste-Aufgabe" v-model="ersteAufgabe" required>
           <div class="invalid-feedback">
             Please provide the erste Aufgabe.
           </div>
         </div>
         <div class="mb-3">
           <label for="nachste-Aufgabe" class="form-label">Nächste Aufgabe</label>
-          <input type="text" class="form-control" id="nachste-Aufgabe" v-model="nachsteAufgabe">
+          <input type="text" class="form-control" id="nachste-Aufgabe" v-model="nachsteAufgabe" required>
           <div class="invalid-feedback">
             Please provide the nachste Aufgabe.
           </div>
         </div>
         <div class="mb-3">
           <label for="job" class="form-label">Wichtigkeit</label>
-          <select id="job" class="form-select" v-model="job">
+          <select id="job" class="form-select" v-model="job" required>
             <option value="" selected disabled>Auswählen...</option>
             <option value="planen">planen</option>
             <option value="sport">sport</option>
@@ -40,7 +40,7 @@
         </div>
         <div class="mb-3">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="erledigt" v-model="erledigt">
+            <input class="form-check-input" type="checkbox" id="erledigt" v-model="erledigt" required>
             <label class="form-check-label" for="erledigt">
               erledigt
             </label>
@@ -72,6 +72,27 @@ export default {
       console.log(this.nachsteAufgabe)
       console.log(this.job)
       console.log(this.erledigt)
+
+      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/erinnerungen'
+
+      const headers = new Headers()
+      headers.append('Content-Type', 'application/json')
+
+      const erinnerung = JSON.stringify({
+        ersteAufgabe: this.ersteAufgabe,
+        nachsteAufgabe: this.nachsteAufgabe,
+        erledigt: this.erledigt,
+        job: this.job
+      })
+
+      const requestOptions = {
+        method: 'POST',
+        headers: headers,
+        body: erinnerung,
+        redirect: 'follow'
+      }
+      fetch(endpoint, requestOptions)
+        .catch(error => console.log('error', error))
     }
   }
 }
