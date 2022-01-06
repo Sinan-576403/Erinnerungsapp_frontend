@@ -1,46 +1,24 @@
 <template>
-  <h1>Hier sind deine Erinnerungen</h1>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" v-for="erinnerung in erinnerungen" :key="erinnerung.id">
-      <div class="card h-100">
-        <img :src="getAvatar(erinnerung)" class="card-img-top" alt="erinnerung.ersteAufgabe + ' ' + erinnerung.nachsteAufgabe">
-        <div class="card-body">
-          <h5 class="card-title">{{ erinnerung.ersteAufgabe }} {{ erinnerung.nachsteAufgabe}} </h5>
-          <p class="card-text">
-            {{ erinnerung.ersteAufgabe }} {{ erinnerung.nachsteAufgabe}} ist {{ erinnerung.erledigt ? 'erledigt' : 'nicht erledigt'}}
-          </p>
-          <div class="card-footer">
-            <small class="text-muted">Last updated 1 sec ago</small>
-          </div>
-        </div>
-      </div>
-    </div>
+  <h1>Deine Erinnerungen sind:</h1>
+  <div class="container-fluid">
+    <erinnerungen-card-list :erinnerungen="this.erinnerungen"></erinnerungen-card-list>
   </div>
+  <erinnerungen-create-form @created="addErinnerung"></erinnerungen-create-form>
 </template>
 
 <script>
+import ErinnerungenCardList from '@/components/ErinnerungenCardList'
+import ErinnerungenCreateForm from '@/components/ErinnerungenCreateForm'
+
 export default {
   name: 'Erinnerungen',
+  components: {
+    ErinnerungenCardList,
+    ErinnerungenCreateForm
+  },
   data () {
     return {
       erinnerungen: []
-    }
-  },
-  methods: {
-    getAvatar (erinnerung) {
-      if (erinnerung.job === 'planen') {
-        return require('../assets/planen.png')
-      } else if (erinnerung.job === 'sport') {
-        return require('../assets/Sport.png')
-      } else if (erinnerung.job === 'kochen') {
-        return require('../assets/kochen.png')
-      } else if (erinnerung.job === 'termin') {
-        return require('../assets/termin.png')
-      } else if (erinnerung.job === 'freizeit') {
-        return require('../assets/freizeit.png')
-      } else if (erinnerung.job === 'ha') {
-        return require('../assets/Ha.png')
-      }
     }
   },
   mounted () {
