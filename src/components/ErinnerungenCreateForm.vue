@@ -8,21 +8,21 @@
       <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <form class="text-start needs-validation" id="erinnerungen-create-form" novalidate>
+      <form class="text-start needs-validation" novalidate >
         <div class="mb-3">
           <label for="erste-Aufgabe" class="form-label">Erste Aufgabe</label>
           <input type="text" class="form-control" id="erste-Aufgabe" v-model="ersteAufgabe" required>
           <div class="invalid-feedback">
-            Please provide the erste Aufgabe.
+            Geben Sie bitte die erste Aufgabe an.
           </div>
-        </div>
+          </div>
         <div class="mb-3">
           <label for="nachste-Aufgabe" class="form-label">Nächste Aufgabe</label>
           <input type="text" class="form-control" id="nachste-Aufgabe" v-model="nachsteAufgabe" required>
           <div class="invalid-feedback">
-            Please provide the nachste Aufgabe.
+            Geben Sie  bitte die nächste Aufgabe an.
           </div>
-        </div>
+          </div>
         <div class="mb-3">
           <label for="job" class="form-label">Wichtigkeit</label>
           <select id="job" class="form-select" v-model="job" required>
@@ -35,7 +35,7 @@
             <option value="ha">ha</option>
           </select>
           <div class="invalid-feedback">
-            Please select a valid job.
+            Geben Sie  bitte die wichtigere Aufgabe an.
           </div>
         </div>
         <div class="mb-3">
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="mt-5">
-          <button class="btn btn-primary me-3" type="submit" @click.prevent="createErinnerung">Create</button>
+          <button class="btn btn-primary me-3" type="submit" @click="createErinnerung">Create</button>
           <button class="btn btn-danger" type="reset">Reset</button>
         </div>
       </form>
@@ -68,31 +68,49 @@ export default {
   },
   methods: {
     createErinnerung () {
-      console.log(this.ersteAufgabe)
-      console.log(this.nachsteAufgabe)
-      console.log(this.job)
-      console.log(this.erledigt)
+      const valid = this.validate()
+      if (valid) {
+        const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/erinnerung'
 
-      const endpoint = process.env.VUE_APP_BACKEND_BASE_URL + '/api/v1/erinnerungen'
+        const headers = new Headers()
+        headers.append('Content-Type', 'application/json')
 
-      const headers = new Headers()
-      headers.append('Content-Type', 'application/json')
+        const erinnerung = JSON.stringify({
+          ersteAufgabe: this.ersteAufgabe,
+          nachsteAufgabe: this.nachsteAufgabe,
+          erledigt: this.erledigt,
+          job: this.job
+        })
 
-      const erinnerung = JSON.stringify({
-        ersteAufgabe: this.ersteAufgabe,
-        nachsteAufgabe: this.nachsteAufgabe,
-        erledigt: this.erledigt,
-        job: this.job
-      })
-
-      const requestOptions = {
-        method: 'POST',
-        headers: headers,
-        body: erinnerung,
-        redirect: 'follow'
+        const requestOptions = {
+          method: 'POST',
+          headers: headers,
+          body: erinnerung,
+          redirect: 'follow'
+        }
+        fetch(endpoint, requestOptions)
+          .catch(error => console.log('error', error))
       }
-      fetch(endpoint, requestOptions)
-        .catch(error => console.log('error', error))
+    },
+    validate () {
+      let valid = true
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              valid = false
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+      return valid
     }
   }
 }

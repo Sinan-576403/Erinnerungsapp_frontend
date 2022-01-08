@@ -3,7 +3,7 @@
   <div class="container-fluid">
     <erinnerungen-card-list :erinnerungen="this.erinnerungen"></erinnerungen-card-list>
   </div>
-  <erinnerungen-create-form @created="addErinnerung"></erinnerungen-create-form>
+  <erinnerungen-create-form></erinnerungen-create-form>
 </template>
 
 <script>
