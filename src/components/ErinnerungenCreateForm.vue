@@ -27,12 +27,12 @@
           <label for="job" class="form-label">Wichtigkeit</label>
           <select id="job" class="form-select" v-model="job" required>
             <option value="" selected disabled>Auswählen...</option>
-            <option value="planen">planen</option>
-            <option value="sport">sport</option>
-            <option value="kochen">kochen</option>
-            <option value="termin">termin</option>
-            <option value="freizeit">freizeit</option>
-            <option value="ha">ha</option>
+            <option value="planen">Planen</option>
+            <option value="sport">Sport</option>
+            <option value="kochen">Kochen</option>
+            <option value="termin">Termin</option>
+            <option value="freizeit">Freizeit</option>
+            <option value="ha">Hausaufgaben</option>
           </select>
           <div class="invalid-feedback">
             Geben Sie  bitte die wichtigere Aufgabe an.
@@ -40,7 +40,7 @@
         </div>
         <div class="mb-3">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="erledigt" v-model="erledigt" required>
+            <input class="form-check-input" type="checkbox" id="erledigt" v-model="erledigt">
             <label class="form-check-label" for="erledigt">
               erledigt
             </label>

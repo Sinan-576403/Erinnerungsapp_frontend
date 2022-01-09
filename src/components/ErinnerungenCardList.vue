@@ -8,7 +8,7 @@
           <h5 class="card-title">{{ erinnerung.ersteAufgabe }} {{ erinnerung.nachsteAufgabe}} </h5>
           <p class="card-text">
             {{ erinnerung.ersteAufgabe }} ist {{ erinnerung.erledigt ? 'erledigt' : 'nicht erledigt'}} + {{ erinnerung.nachsteAufgabe}}
-            ist {{ erinnerung.erledigt ? 'erledigt' : 'nicht erledigt'}}
+            muss noch {{ erinnerung.erledigt ? 'erledigt' : 'nicht erledigt'}} werden
           </p>
         </div>
       </div>

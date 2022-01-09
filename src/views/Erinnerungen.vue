@@ -1,5 +1,5 @@
 <template>
-  <h1>Deine Erinnerungen sind:</h1>
+  <h1></h1>
   <div class="container-fluid">
     <erinnerungen-card-list :erinnerungen="this.erinnerungen"></erinnerungen-card-list>
   </div>
