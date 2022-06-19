@@ -8,24 +8,24 @@
       <button type="button" id="close-offcanvas" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-      <form class="text-start needs-validation" novalidate >
-        <div class="mb-3">
-          <label for="erste-Aufgabe" class="form-label">Erste Aufgabe</label>
+      <form class="text-start needs-validation"  >
+        <div class="mb-2">
+          <label for="erste-Aufgabe" class="form-label">Erste Erinnerung</label>
           <input type="text" class="form-control" id="erste-Aufgabe" v-model="ersteAufgabe" required>
           <div class="invalid-feedback">
             Geben Sie bitte die erste Aufgabe an.
           </div>
-          </div>
-        <div class="mb-3">
-          <label for="nachste-Aufgabe" class="form-label">Nächste Aufgabe</label>
-          <input type="text" class="form-control" id="nachste-Aufgabe" v-model="nachsteAufgabe" required>
+        </div>
+        <div class="mb-2">
+          <label for="nachste-Aufgabe" class="form-label">Nächste Erinnerung</label>
+          <input type="text" class="form-control" id="nachste-Aufgabe" v-model="nachsteAufgabe" >
           <div class="invalid-feedback">
-            Geben Sie  bitte die nächste Aufgabe an.
+            Geben Sie  bitte die nächste Erinnerung an.
           </div>
-          </div>
-        <div class="mb-3">
+        </div>
+        <div class="mb-2">
           <label for="job" class="form-label">Wichtigkeit</label>
-          <select id="job" class="form-select" v-model="job" required>
+          <select id="job" class="form-select" v-model="job" >
             <option value="" selected disabled>Auswählen...</option>
             <option value="planen">Planen</option>
             <option value="sport">Sport</option>
@@ -38,7 +38,7 @@
             Geben Sie  bitte die wichtigere Aufgabe an.
           </div>
         </div>
-        <div class="mb-3">
+        <div class="mb-2">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="erledigt" v-model="erledigt">
             <label class="form-check-label" for="erledigt">
@@ -47,8 +47,9 @@
           </div>
         </div>
         <div class="mt-5">
-          <button class="btn btn-primary me-3" type="submit" @click="createErinnerung">Create</button>
-          <button class="btn btn-danger" type="reset">Reset</button>
+          <button class="btn btn-primary me-2" type="submit" @click="createErinnerung">Create</button>
+          <button class="btn btn-danger me-2" type="reset">Reset</button>
+          <button type="button" class="btn btn-warning ">Edit</button>
         </div>
       </form>
     </div>
@@ -122,7 +123,7 @@ export default {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  padding: 10px 20px;
+  padding: 15px 15px;
   border-radius: 30px;
 }
 </style>
