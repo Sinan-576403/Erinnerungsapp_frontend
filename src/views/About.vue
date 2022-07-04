@@ -2,7 +2,7 @@
   <div class="about">
     <h2>Das ist die About Page für Admins</h2>
     <p></p>
-    <h2>Dies ist ein Projekt des Moduls Webtech-21/22</h2>
+    <h2>Dies ist ein Projekt des Moduls Webtech-22</h2>
     <p></p>
     <h4></h4>
     <p></p>
@@ -19,7 +19,18 @@
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-      <p class="mt-5 mb-3 text-muted">© 2022</p>
     </form>
   </div>
 </template>
+<style>
+body  {
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8eCEUbADuIz1anZ8SHhqrioctPzZ4LIoltwV6IPK1xDmHIB_FAZ8f_OP8ohuQf16AuA&usqp=CAU");
+  background-color: #cccccc;
+  height: 50px;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  position: relative;
+
+}
+</style>

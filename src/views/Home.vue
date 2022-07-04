@@ -20,7 +20,6 @@
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Anmelden</button>
-      <p class="mt-5 mb-3 text-muted">© 2022</p>
     </form>
   </div>
 </template>
