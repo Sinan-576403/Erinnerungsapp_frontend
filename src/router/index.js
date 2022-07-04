@@ -4,6 +4,7 @@ import About from '../views/About.vue'
 import Erinnerungen from '../views/Erinnerungen.vue'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
+import Liste from '@/views/Liste'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     path: '/erinnerungen',
     name: 'Erinnerungen',
     component: Erinnerungen
+  },
+  {
+    path: '/Liste',
+    name: 'Liste',
+    component: Liste
   }
 ]
 
