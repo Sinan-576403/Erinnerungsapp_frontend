@@ -10,6 +10,7 @@
           <router-link class="nav-link" to="/">Home</router-link>
           <router-link class="nav-link" to="/about">About</router-link>
           <router-link class="nav-link" to="/erinnerungen">Erinnerungen</router-link>
+          <router-link class="nav-link" to="/Liste">Liste</router-link>
         </div>
       </div>
     </div>
